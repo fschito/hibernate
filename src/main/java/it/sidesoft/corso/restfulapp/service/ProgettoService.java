@@ -49,4 +49,11 @@ public class ProgettoService {
         }
         return Optional.empty();
     }
+
+    public List<ProgettoDto> ricercaProgetti(String titolo, Integer offset, Integer limit) {
+        log.info("Ricerco  i progetti");
+        List<Progetto> progettoList = progettoRepository.ricercaProgetti(titolo, offset,limit);
+        return progettoDtoMapper.toDto(progettoList);
+    }
+
 }

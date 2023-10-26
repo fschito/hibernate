@@ -32,4 +32,10 @@ public class ProgettoController {
                 .orElseThrow(() -> new RuntimeException(String.format("Impossibile trovare il progetto con id:%s", id)));
     }
 
+    @GetMapping("/ricercaProgetti")
+    List<ProgettoDto> ricercaProgetti(@RequestParam(value = "titolo") String titolo,
+                                @RequestParam(value = "offset", defaultValue = "0") Integer offset,
+                                @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
+        return progettoService.ricercaProgetti(titolo,offset, limit);
+    }
 }
